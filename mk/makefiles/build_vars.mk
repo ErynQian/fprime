@@ -24,5 +24,8 @@ print_gcov:
 print_build_site:
 	@echo $(BUILD_SITE)
 	
+print_python_base:
+	@echo $(PYTHON_BASE)
+	
 print_native_build:
 	@echo $(NATIVE_BUILD)

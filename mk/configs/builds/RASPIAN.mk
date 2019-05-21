@@ -8,10 +8,6 @@ ifeq ($(COMP),gcc-debug)
  include $(BUILD_ROOT)/mk/configs/builds/raspian-gcc-debug.mk
 endif
 
-ifeq ($(COMP),gcc-cross)
- include $(BUILD_ROOT)/mk/configs/builds/raspian-gcc-cross.mk
-endif
-
 ifeq ($(COMP),comp-ut)
  include $(BUILD_ROOT)/mk/configs/builds/raspian-gcc-ut.mk
 endif

@@ -15,9 +15,9 @@ TOUCH := touch
 NM := /usr/bin/nm
 MAKE := /usr/bin/make
 
-PERL_BASE := /usr
-export PERL_BIN := $(PERL_BASE)/bin/perl
-export PERL_LIB := $(PERL_BASE)/lib
+# PERL_BASE := /usr
+# export PERL_BIN := $(PERL_BASE)/bin/perl
+# export PERL_LIB := $(PERL_BASE)/lib
 
 SLOC_COUNTER := ${BUILD_ROOT}/mk/bin/ncsl -v -i
 PROCESS_SLOC := ${BUILD_ROOT}/mk/bin/process_ncsl_sloc.py

@@ -17,16 +17,10 @@ namespace Fw {
         
     }
 
-    SerializeStatus InputSerializePort::invokeSerial(SerializeBufferBase &buffer) {
+    void InputSerializePort::invokeSerial(SerializeBufferBase &buffer) {
         FW_ASSERT(this->m_comp);
         FW_ASSERT(this->m_func);
-
         this->m_func(this->m_comp,this->m_portNum,buffer);
-
-        // The normal input ports perform deserialize() on the passed buffer,
-        // which is what this status is based on.  This is not the case for the
-        // InputSerializePort, so just return a okay status
-        return FW_SERIALIZE_OK;
     }
 
     void InputSerializePort::addCallComp(Fw::PassiveComponentBase* callComp, CompFuncPtr funcPtr) {

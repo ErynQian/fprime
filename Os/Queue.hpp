@@ -1,4 +1,4 @@
-#ifndef _Queue_hpp_
+    #ifndef _Queue_hpp_
 #define _Queue_hpp_
 
 #include <Fw/Types/BasicTypes.hpp>
@@ -53,17 +53,24 @@ namespace Os {
             static void setQueueRegistry(QueueRegistry* reg); // !< set the queue registry
 #endif
 
-        protected:
+        private:
+
             POINTER_CAST m_handle; //!<  handle for implementation specific queue
             QueueString m_name; //!< queue name
+            Queue(Queue&); //!<  Disabled copy constructor
+            Queue(Queue*); //!<  Disabled copy constructor
 #if FW_QUEUE_REGISTRATION
             static QueueRegistry* s_queueRegistry; //!< pointer to registry
 #endif
             static NATIVE_INT_TYPE s_numQueues; //!< tracks number of queues in the system
 
-        private:
-            Queue(Queue&); //!<  Disabled copy constructor
-            Queue(Queue*); //!<  Disabled copy constructor
+#if TGT_OS_TYPE_FREERTOS_SIM || TGT_OS_TYPE_FREERTOS_REAL
+            NATIVE_INT_TYPE depth;
+            NATIVE_INT_TYPE msgSize;
+            U8 *msg_buffer;
+#endif
+
+
     };
 
     class QueueRegistry {

@@ -24,11 +24,10 @@ LINK_BIN_FLAGS :=  $(LIBS) #$(BUILD_32BIT)
 FILE_SIZE := $(LS) $(LS_SIZE)
 LOAD_SIZE := $(SIZE)
 
-LINK_LIBS := -ldl -lpthread -lm -lc++
+LINK_LIBS := -ldl -lpthread -lm -lc++ -lssl -lcrypto
 
 OPT_SPEED := -Os
 DEBUG := -g3
-POST_LINK_BIN := $(BUILD_ROOT)/mk/bin/empty.sh
 
 DARWIN_LLVM_CFLAGS := $(LINUX_FLAGS_COMMON) \
 					$(COMMON_DEFINES) \
@@ -37,7 +36,6 @@ DARWIN_LLVM_CFLAGS := $(LINUX_FLAGS_COMMON) \
 
 DARWIN_LLVM_CXXFLAGS :=	$(LINUX_FLAGS_COMMON) \
 						$(COMMON_DEFINES) \
-						-std=c++11 \
 						$(LLVM_CXXFLAGS_COMMON) \
 						#$(BUILD_32BIT)
 

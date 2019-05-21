@@ -9,13 +9,14 @@ extern "C" {
 Os::Task* testTask = 0;
 
 void someTask(void* ptr) {
-    
+
     long iters = (long) ptr;
-    
+
     while (iters--) {
         Os::Task::delay(1000);
         printf("Tick %ld!\n",iters);
     }
+    while (1);
 }
 
 void startTestTask(int iters) {

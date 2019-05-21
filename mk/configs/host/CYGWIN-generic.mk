@@ -1,6 +1,7 @@
 include $(BUILD_ROOT)/mk/configs/host/Linux-common.mk
 
-export PYTHON_BIN := python
+export PYTHON_BASE ?= /usr
+export PYTHON_BIN := $(PYTHON_BASE)/bin/python
 export CHEETAH_COMPILE ?= /bin/cheetah-compile
 export MARKDOWN ?= /usr/bin/markdown_py -x markdown.extensions.extra -x markdown.extensions.codehilite
 export DOXYGEN := doxygen 

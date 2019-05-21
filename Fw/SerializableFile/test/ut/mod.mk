@@ -4,8 +4,3 @@ TEST_MODS = Fw/SerializableFile \
 	    Fw/Types \
 	    gtest \
 	    Os
-	    
-
-
-
-COMPARGS = -I$(CURDIR)/test/ut/Handcode

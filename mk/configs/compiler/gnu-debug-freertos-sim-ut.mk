@@ -1,0 +1,47 @@
+include $(BUILD_ROOT)/mk/configs/compiler/linux_gnu_common.mk
+include $(BUILD_ROOT)/mk/configs/compiler/include_common.mk
+include $(BUILD_ROOT)/mk/configs/compiler/freertos_sim_common.mk
+include $(BUILD_ROOT)/mk/configs/compiler/ut_flags.mk
+
+ifeq ("$(HOST)","Darwin")
+CFLAGS :=   $(DEBUG) \
+$(FREERTOS_SIM_GNU_CFLAGS) \
+$(FREERTOS_SIM_GNU_INCLUDES) \
+$(FREERTOS_SIM_FLAGS_COMMON) \
+$(FREERTOS_SIM_INCLUDES_COMMON) \
+$(COVERAGE) \
+$(UT_FLAGS)
+
+CXXFLAGS := $(DEBUG) \
+$(FREERTOS_SIM_GNU_CXXFLAGS) \
+$(FREERTOS_SIM_GNU_INCLUDES) \
+$(FREERTOS_SIM_FLAGS_COMMON) \
+$(FREERTOS_SIM_INCLUDES_COMMON) \
+$(COVERAGE) \
+$(UT_FLAGS) \
+-fno-rtti
+
+LINK_BIN_FLAGS := $(LINK_BIN_FLAGS) $(COVERAGE)
+endif
+
+ifeq ("$(HOST)","Linux")
+CFLAGS :=   $(DEBUG) \
+$(FREERTOS_SIM_GNU_CFLAGS) \
+$(FREERTOS_SIM_GNU_INCLUDES) \
+$(FREERTOS_SIM_FLAGS_COMMON) \
+$(FREERTOS_SIM_INCLUDES_COMMON) \
+$(COVERAGE) \
+$(UT_FLAGS)
+
+CXXFLAGS := $(DEBUG) \
+$(FREERTOS_SIM_GNU_CXXFLAGS) \
+$(FREERTOS_SIM_GNU_INCLUDES) \
+$(FREERTOS_SIM_FLAGS_COMMON) \
+$(FREERTOS_SIM_INCLUDES_COMMON) \
+$(COVERAGE) \
+$(UT_FLAGS)
+
+LINK_BIN_FLAGS := $(LINK_BIN_FLAGS) $(COVERAGE)
+endif
+
+COMPILER := freertos-sim-debug-gnu-ut

@@ -30,9 +30,9 @@ namespace Fw {
         this->m_serPort = port;
     }
     
-    SerializeStatus OutputPortBase::invokeSerial(SerializeBufferBase &buffer) {
+    void OutputPortBase::invokeSerial(SerializeBufferBase &buffer) {
         FW_ASSERT(this->m_serPort);
-        return this->m_serPort->invokeSerial(buffer);
+        this->m_serPort->invokeSerial(buffer);
     }
 #endif
     

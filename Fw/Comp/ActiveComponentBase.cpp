@@ -4,32 +4,30 @@
 #include <Fw/Types/EightyCharString.hpp>
 #include <stdio.h>
 
-//#define DEBUG_PRINT(x,...) printf(x,##__VA_ARGS__); fflush(stdout)
-#define DEBUG_PRINT(x,...)
 
 namespace Fw {
-
+    
     class ActiveComponentExitSerializableBuffer : public Fw::SerializeBufferBase {
-
+        
         public:
             NATIVE_UINT_TYPE getBuffCapacity(void) const {
                 return sizeof(m_buff);
             }
-
+        
             U8* getBuffAddr(void) {
                 return m_buff;
             }
-
+        
             const U8* getBuffAddr(void) const {
                 return m_buff;
             }
 
         private:
-
+            
             U8 m_buff[sizeof(ActiveComponentBase::ACTIVE_COMPONENT_EXIT)];
-
+            
     };
-
+    
 #if FW_OBJECT_NAMES == 1
     ActiveComponentBase::ActiveComponentBase(const char* name) : QueuedComponentBase(name) {
 
@@ -40,9 +38,9 @@ namespace Fw {
     }
 #endif
     ActiveComponentBase::~ActiveComponentBase() {
-        DEBUG_PRINT("ActiveComponent %s destructor.\n",this->getObjName());
-    }
 
+    }
+    
     void ActiveComponentBase::init(NATIVE_INT_TYPE instance) {
         QueuedComponentBase::init(instance);
     }
@@ -53,11 +51,11 @@ namespace Fw {
         buffer[size-1] = 0;
     }
 #endif
-
-    void ActiveComponentBase::start(NATIVE_INT_TYPE identifier, NATIVE_INT_TYPE priority, NATIVE_INT_TYPE stackSize, NATIVE_INT_TYPE cpuAffinity) {
-
+    
+    void ActiveComponentBase::start(NATIVE_INT_TYPE identifier, NATIVE_INT_TYPE priority, NATIVE_INT_TYPE stackSize) {
+        
         Fw::EightyCharString taskName;
-
+        
 #if FW_OBJECT_NAMES == 1
         taskName = this->getObjName();
 #else
@@ -65,22 +63,18 @@ namespace Fw {
         (void)snprintf(taskNameChar,sizeof(taskNameChar),"ActComp_%d",Os::Task::getNumTasks());
         taskName = taskNameChar;
 #endif
-
-    	Os::Task::TaskStatus status = this->m_task.start(taskName, identifier, priority, stackSize, this->s_baseTask,this, cpuAffinity);
+        
+    	Os::Task::TaskStatus status = this->m_task.start(taskName, identifier, priority, stackSize, this->s_baseTask,
+                        this);
     	FW_ASSERT(status == Os::Task::TASK_OK,(NATIVE_INT_TYPE)status);
     }
-
+    
     void ActiveComponentBase::exit(void) {
         ActiveComponentExitSerializableBuffer exitBuff;
         SerializeStatus stat = exitBuff.serialize((I32)ACTIVE_COMPONENT_EXIT);
         FW_ASSERT(FW_SERIALIZE_OK == stat,static_cast<NATIVE_INT_TYPE>(stat));
-        (void)this->m_queue.send(exitBuff,0,Os::Queue::QUEUE_NONBLOCKING);
-        DEBUG_PRINT("exit %s\n", this->getObjName());
-    }
-
-    Os::Task::TaskStatus ActiveComponentBase::join(void **value_ptr) {
-        DEBUG_PRINT("join %s\n", this->getObjName());
-        return this->m_task.join(value_ptr);
+        Os::Queue::QueueStatus qStat = this->m_queue.send(exitBuff,0,Os::Queue::QUEUE_NONBLOCKING);
+        FW_ASSERT(Os::Queue::QUEUE_OK == qStat,static_cast<NATIVE_INT_TYPE>(qStat));
     }
 
     void ActiveComponentBase::s_baseTask(void* ptr) {
@@ -113,9 +107,9 @@ namespace Fw {
                     FW_ASSERT(0,(NATIVE_INT_TYPE)loopStatus);
             }
         }
-
+        
     }
-
+    
     void ActiveComponentBase::preamble(void) {
     }
 

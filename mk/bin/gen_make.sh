@@ -1,7 +1,11 @@
-#!/bin/sh
+#!/bin/csh
 # **********************************************************************
 # *
  
-export PYTHONPATH="${BUILD_ROOT}/mk/src"
-python "${BUILD_ROOT}/mk/src/genmake.py" "${BUILD_ROOT}/mk/makefiles/Makefile"
+setenv LD_LIBRARY_PATH ${PYTHON_BASE}/lib:/tps/lib:/usr/lib:/lib
+setenv PATH ${PYTHON_BASE}/bin:/tps/bin:/usr/bin:/bin
+setenv PYTHONPATH ${BUILD_ROOT}/mk/src
+
+${PYTHON_BASE}/bin/python ${BUILD_ROOT}/mk/src/genmake.py ${BUILD_ROOT}/mk/makefiles/Makefile
+
 

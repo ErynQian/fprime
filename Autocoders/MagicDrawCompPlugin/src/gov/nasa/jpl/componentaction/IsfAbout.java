@@ -36,7 +36,7 @@ public class IsfAbout extends MDAction {
     public void actionPerformed(ActionEvent e)
     {
 		try {
-			JarFile jf = new JarFile(pluginDir + "/FpCompAuto.jar");
+			JarFile jf = new JarFile(pluginDir + "/MyPlugin.jar");
 			ZipEntry manifest = jf.getEntry("META-INF/MANIFEST.MF");
 			long manifestTime = manifest.getTime();
 			Date testDate = new Date(manifestTime);

@@ -15,7 +15,3 @@ endif
 ifeq ($(COMP),comp-ut-nocov)
  include $(BUILD_ROOT)/mk/configs/builds/linux-gcc-ut-nocov.mk
 endif
-
-ifeq ($(COMP),comp-integ)
- include $(BUILD_ROOT)/mk/configs/builds/linux-gcc-ut-nocov.mk
-endif

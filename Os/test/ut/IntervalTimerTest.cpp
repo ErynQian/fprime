@@ -3,14 +3,16 @@
 #include <cstdio>
 
 extern "C" {
-    void intervalTimerTest(void);
+    void intervalTimerTest(void* p);
 }
 
-void intervalTimerTest(void) {
+void intervalTimerTest(void* p) {
     Os::IntervalTimer timer;
     timer.start();
-    Os::Task::delay(1000);
+    Os::Task::delay(5000);
     timer.stop();
 
     printf("Usec: %d\n",timer.getDiffUsec());
+
+    while(1);
 }
