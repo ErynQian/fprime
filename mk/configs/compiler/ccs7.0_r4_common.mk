@@ -12,7 +12,9 @@ CCS_R4_COMMON_FLAGS :=  $(COMMON_DEFINES) \
                                 --code_state=32 \
                                 -me \
                                 --abi=eabi --enum_type=packed \
-                                $(FREERTOS_REAL_FLAGS_COMMON)
+                                $(FREERTOS_REAL_FLAGS_COMMON) \
+                                -D_LIBCPP_HAS_NO_LONG_LONG \
+                                -DBUILD_TIR4
 
 
 

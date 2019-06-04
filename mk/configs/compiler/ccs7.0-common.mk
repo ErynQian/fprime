@@ -1,4 +1,4 @@
-CCS_COMMON := --display_error_number --diag_warning=225 --diag_wrap=off -DNAME_MAX=255 -DPATH_MAX=4096
+CCS_COMMON := --display_error_number --diag_warning=225 --diag_wrap=off -DNAME_MAX=31 -DPATH_MAX=127
 
 DEPEND_FILE := -ppa -ppd=
                

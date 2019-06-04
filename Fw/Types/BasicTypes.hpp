@@ -39,16 +39,13 @@ typedef unsigned int NATIVE_UINT_TYPE; //!< native unsigned integer type declara
 //   #error TI ARM is defined!!!!!!
 // #endif
 
-// #if defined BUILD_TIR4
-//   #define POINTER_CAST U32
-// #else
 
-// #if defined BUILD_TIR4
-//   NATIVE_INT_TYPE strnlen(const char *s, NATIVE_INT_TYPE maxlen);
-// #endif
 
-// #if defined __GNUC__ || __llvm__ 
-#if true
+#if defined BUILD_TIR4
+  NATIVE_INT_TYPE strnlen(const char *s, NATIVE_INT_TYPE maxlen);
+  #define POINTER_CAST U32
+
+#elif defined __GNUC__ || __llvm__ 
 
 // This is used to cast pointers to integers
 // when a pointer needs to be stored generically.

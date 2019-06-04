@@ -66,10 +66,6 @@ SVC_MODULES := \
     Svc/FatalHandler \
 	Svc/FileManager
 
-	#Svc/BuffGndSockIf \
-	Svc/GndIf \
-	Svc/SocketGndIf
-
 DEMO_DRV_MODULES := \
 	Drv/DataTypes \
 	Drv/BlockDriver
