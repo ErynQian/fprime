@@ -8,7 +8,7 @@
 #ifndef TLMCHAN_TEST_UT_TLMCHANIMPLTESTER_HPP_
 #define TLMCHAN_TEST_UT_TLMCHANIMPLTESTER_HPP_
 
-#include <GTestBase.hpp>
+#include <Svc/TlmChan/test/ut/GTestBase.hpp>
 #include <Svc/TlmChan/TlmChanImpl.hpp>
 
 namespace Svc {
@@ -44,12 +44,7 @@ namespace Svc {
             // dump functions
             void dumpHash(void);
             static void dumpTlmEntry(TlmChanImpl::TlmEntry* entry);
-            //! Handler for from_pingOut
-            //!
-            void from_pingOut_handler(
-                const NATIVE_INT_TYPE portNum, /*!< The port number*/
-                U32 key /*!< Value to return to pinger*/
-            );
+
 
     };
 

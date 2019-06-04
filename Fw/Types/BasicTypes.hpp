@@ -35,7 +35,19 @@ typedef int NATIVE_INT_TYPE; //!< native integer type declaration
 typedef unsigned int NATIVE_UINT_TYPE; //!< native unsigned integer type declaration
 #endif
 
-//#if defined __GNUC__ || __llvm__
+// #ifdef  __TI_ARM__ 
+//   #error TI ARM is defined!!!!!!
+// #endif
+
+// #if defined BUILD_TIR4
+//   #define POINTER_CAST U32
+// #else
+
+// #if defined BUILD_TIR4
+//   NATIVE_INT_TYPE strnlen(const char *s, NATIVE_INT_TYPE maxlen);
+// #endif
+
+// #if defined __GNUC__ || __llvm__ 
 #if true
 
 // This is used to cast pointers to integers

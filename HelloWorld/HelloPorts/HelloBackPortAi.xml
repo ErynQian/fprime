@@ -1,0 +1,10 @@
+<interface name="HelloBack" namespace="HelloWorld">
+    <comment>
+    HelloBack
+    </comment>
+    <args>
+        <arg name="helloback" type="I32">
+		</arg>
+    </args>
+</interface>
+

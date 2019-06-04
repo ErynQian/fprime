@@ -1,4 +1,4 @@
-// ======================================================================
+// ====================================================================== 
 // \title  Hash.hpp
 // \author dinkel
 // \brief  hpp file for Hash class
@@ -6,14 +6,20 @@
 // \copyright
 // Copyright 2009-2015, by the California Institute of Technology.
 // ALL RIGHTS RESERVED.  United States Government Sponsorship
-// acknowledged.
-//
-// ======================================================================
+// acknowledged. Any commercial use must be negotiated with the Office
+// of Technology Transfer at the California Institute of Technology.
+// 
+// This software may be subject to U.S. export control laws and
+// regulations.  By accepting this document, the user agrees to comply
+// with all U.S. export laws and regulations.  User has the
+// responsibility to obtain export licenses, or other export authority
+// as may be required before exporting such information to foreign
+// countries or providing access to foreign persons.
+// ====================================================================== 
 
-#ifndef UTILS_HASH_HPP
+#ifndef UTILS_HASH_HPP 
 #define UTILS_HASH_HPP
 
-#include "Fw/Types/EightyCharString.hpp"
 #include <Utils/Hash/HashBuffer.hpp>
 
 namespace Utils {
@@ -26,7 +32,7 @@ namespace Utils {
     public:
 
       // ----------------------------------------------------------------------
-      // Construction and destruction
+      // Construction and destruction 
       // ----------------------------------------------------------------------
 
       //! Construct a Hash object
@@ -40,7 +46,7 @@ namespace Utils {
     public:
 
       // ----------------------------------------------------------------------
-      // Public static methods
+      // Public static methods 
       // ----------------------------------------------------------------------
 
       //! Create a hash value all at once from raw data
@@ -53,9 +59,9 @@ namespace Utils {
 
     public:
 
-      // ----------------------------------------------------------------------
+      // ---------------------------------------------------------------------- 
       // Public instance methods
-      // ----------------------------------------------------------------------
+      // ---------------------------------------------------------------------- 
 
       //! Initialize a Hash object for incremental hash computation
       //!
@@ -77,23 +83,16 @@ namespace Utils {
       //! Get the file extension for the supported hash type
       //! E.g., could return "SHA256"
       //!
-      static const char* getFileExtensionString(void);
-
-      //! Add the extension for the supported hash type
-      //!
-      static void addFileExtension(
-          const Fw::EightyCharString& baseName, //!< The base name
-          Fw::EightyCharString& extendedName //!< The extended name
-      );
+      static const char* getFileExtensionString(void);     
 
       //! Get the length of the file extension string
       //!
-      static NATIVE_UINT_TYPE getFileExtensionLength(void);
+      static NATIVE_UINT_TYPE getFileExtensionLength(void);     
 
     private:
 
       // ----------------------------------------------------------------------
-      // Private member variables
+      // Private member variables 
       // ----------------------------------------------------------------------
 
       //! The hash handle

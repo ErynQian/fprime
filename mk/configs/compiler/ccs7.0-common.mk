@@ -4,8 +4,8 @@ DEPEND_FILE := -ppa -ppd=
                
 CCS_CFLAGS_COMMON := $(CCS_COMMON) --c99 
 
-CCS_CXXFLAGS_COMMON := $(CCS_COMMON) --c++14 \
-						--include_path=/usr/arm-linux-gnueabihf/include
+CCS_CXXFLAGS_COMMON := $(CCS_COMMON) --c++14 
+						# --include_path=/usr/arm-linux-gnueabihf/include
 
 
 # Special compiler flags to get around known AC warnings

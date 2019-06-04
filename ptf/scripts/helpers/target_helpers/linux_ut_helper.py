@@ -1,6 +1,6 @@
 import scripts.helpers.target_helper
 import scripts.helpers.process_helper
-import subprocess
+import commands
 import os
 import signal
 import time

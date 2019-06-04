@@ -1,0 +1,6 @@
+<serializable namespace="HelloWorld" name="Hello">
+	<members>
+		<member name="hello" type="I32"/>
+		<member name="helloback" type="I32"/>
+	</members>
+</serializable>

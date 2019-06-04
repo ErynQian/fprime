@@ -2,24 +2,11 @@
 import readline
 import signal
 import os
-import sys
 import errno
 import subprocess
 
 import scripts.helpers.helper
 
-def getstatusoutput(cmd):
-    '''
-    Replaces `commands.getstatusoutput` for use in python 2/3 code. This is a wrapper layer to virtualize old python 2
-    code with new python 3 syntax and libraries.
-    @param cmd: command to run
-    '''
-    process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
-    (out, err) = process.communicate()
-    if sys.version_info >= (3, 0):
-        out = out.decode("utf-8")
-    assert err is None, "Failed to force standard error to standard out"
-    return (process.returncode, out)
 
 class BackgroundProcess(object):
 
@@ -32,12 +19,12 @@ class BackgroundProcess(object):
 		
 		new_env = {}
 		# copy current environment
-		for entry in list(os.environ.keys()):
+		for entry in os.environ.keys():
 			new_env[entry] = os.environ[entry]
 		 
 		# copy additional environment variables
 		if (env != None):
-			for entry in list(env.keys()):
+			for entry in env.keys():
 				new_env[entry] = env[entry]
 				
 		stdoutfile = open(stdout_file,'w')
@@ -47,7 +34,7 @@ class BackgroundProcess(object):
 	def kill(self, sig=signal.SIGINT):
 		try:
 			os.killpg(self.pid,sig)
-		except OSError as e :
+		except OSError,e :
 			if e.errno != errno.ESRCH and e.errno != errno.ECHILD :
 			    raise
 
@@ -62,7 +49,7 @@ class BackgroundProcess(object):
 			status = (rawstatus & 0xFF00) >> 8
 			return status
 		except:
-			print("Process %i already exited or interrupted." % self.pid)
+			print "Process %i already exited or interrupted." % self.pid
 			return None
 	
 class BackgroundProcessWithPipe(object):
@@ -109,7 +96,7 @@ class BackgroundProcessWithPipe(object):
 	def kill(self, sig=signal.SIGINT):
 		try:
 			os.kill(self.pid,sig)
-		except OSError as e :
+		except OSError,e :
 			if e.errno != errno.ESRCH :
 			    raise
 	def send(self, input):
@@ -126,7 +113,7 @@ class BackgroundProcessWithPipe(object):
 			status = (rawstatus & 0xFF00) >> 8
 			return status
 		except:
-			print("Process %i already exited or interrupted." % self.pid)
+			print "Process %i already exited or interrupted." % self.pid
 			return None
 			
 class BackgroundProcessHelper(scripts.helpers.helper.Helper):

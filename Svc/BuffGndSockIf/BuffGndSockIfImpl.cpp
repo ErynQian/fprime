@@ -16,7 +16,7 @@
 #include <fioLib.h>
 #include <taskLib.h>
 #include <sysLib.h>
-#elif defined TGT_OS_TYPE_LINUX || TGT_OS_TYPE_DARWIN
+#elif defined TGT_OS_TYPE_LINUX || TGT_OS_TYPE_DARWIN || TGT_OS_TYPE_FREERTOS_SIM
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
@@ -34,7 +34,7 @@ namespace Svc {
     /////////////////////////////////////////////////////////////////////
     // Helper functions
     /////////////////////////////////////////////////////////////////////
-    
+
     namespace {
 
         NATIVE_INT_TYPE socketWrite(NATIVE_INT_TYPE fd, U8* buf, U32 size) {
@@ -84,7 +84,7 @@ namespace Svc {
     void BuffGndSockIfImpl::init(void) {
         BuffGndSockIfComponentBase::init();
     }
-    
+
     BuffGndSockIfImpl::~BuffGndSockIfImpl() {
 
     }

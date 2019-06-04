@@ -4,7 +4,7 @@
 
 # derive module name from directory
 
-MODULES = Hash
+MODULES = Hash Monitor
 
 BASE_DIR = $(notdir $(CURDIR))
 
@@ -12,3 +12,4 @@ BUILD_ROOT ?= $(subst /$(BASE_DIR),,$(CURDIR))
 export BUILD_ROOT
 
 include $(BUILD_ROOT)/mk/makefiles/base_targets.mk
+

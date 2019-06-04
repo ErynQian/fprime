@@ -1,0 +1,38 @@
+<component name="HelloSender" kind="active" namespace="HelloWorld">
+    <import_port_type>HelloWorld/HelloPorts/HelloPortAi.xml</import_port_type>
+    <import_port_type>HelloWorld/HelloPorts/HelloBackPortAi.xml</import_port_type>
+    <comment>Component saying hello</comment>
+    <ports>
+        <port name="HelloOut" data_type="HelloWorld::Hello" kind="output"></port>
+        <port name="HelloIn" data_type="HelloWorld::HelloBack" kind="async_input"></port>
+    </ports>
+    <commands>
+        <command kind="async" opcode="0" mnemonic="SAY_HELLO">
+            <comment>
+            1 for hello; 2 for helloback
+            </comment>
+	    <args>
+		<arg name="hello" type="I32"></arg>
+   	    </args>
+        </command>
+    </commands>
+
+    <telemetry>
+        <channel id="0" name="SEND_HELLO" data_type="I32"></channel>
+        <channel id="1" name="RX_HELLO" data_type="I32"></channel>
+    </telemetry>
+
+    <events>
+        <event id="0" name="I_SAID_HELLO" severity="ACTIVITY_LO" format_string = "Hello World: %d" >
+            <args>
+                <arg name="hello" type="I32"></arg>          
+            </args>
+        </event>
+        <event id="1" name="I_HEARD_HELLO" severity="ACTIVITY_HI" format_string = "Hi there: %d" >
+            <args>
+                <arg name="helloback" type="I32"></arg>          
+            </args>
+        </event>
+    </events>
+    
+</component>

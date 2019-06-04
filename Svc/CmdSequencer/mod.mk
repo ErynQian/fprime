@@ -4,14 +4,9 @@
 
 SRC = \
 	CmdSequencerComponentAi.xml \
-	CmdSequencerImpl.cpp \
-	Events.cpp \
-	FPrimeSequence.cpp \
-        Sequence.cpp \
-	formats/AMPCSSequence.cpp
+	CmdSequencerImpl.cpp
 
 HDR = \
-	CmdSequencerImpl.hpp \
-	formats/AMPCSSequence.hpp
+	CmdSequencerImpl.hpp
 
 SUBDIRS = test

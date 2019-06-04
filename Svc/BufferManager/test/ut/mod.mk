@@ -2,8 +2,8 @@
 # mod.mk 
 # ----------------------------------------------------------------------
 
-TEST_SRC=Handcode/TesterBase.cpp \
-				 Handcode/GTestBase.cpp \
+TEST_SRC=TesterBase.cpp \
+				 GTestBase.cpp \
 				 Tester.cpp \
 				 Main.cpp 
 
@@ -12,7 +12,3 @@ TEST_MODS=Svc/BufferManager \
 					Fw/Tlm Fw/Types Fw/Log Fw/Obj Os Fw/Com \
 					gtest
 
-
-
-
-COMPARGS = -I$(CURDIR)/test/ut/Handcode

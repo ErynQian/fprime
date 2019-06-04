@@ -1,0 +1,61 @@
+<component name="HelloReceiver" kind="queued" namespace="HelloWorld">
+    <import_port_type>HelloWorld/HelloPorts/HelloPortAi.xml</import_port_type>
+    <import_port_type>HelloWorld/HelloPorts/HelloBackPortAi.xml</import_port_type>
+    <import_port_type>Svc/Sched/SchedPortAi.xml</import_port_type>
+    <import_serializable_type>HelloWorld/HelloTypes/HelloSerializableAi.xml</import_serializable_type>
+    <comment>Component saying hello back</comment>
+    <ports>
+        <port name="HelloIn" data_type="HelloWorld::Hello" kind="async_input">
+            <comment>
+            Port for saying hello
+            </comment>
+        </port>
+        <port name="HelloOut" data_type="HelloWorld::HelloBack" kind="output">
+            <comment>
+            Port for receiving hello
+            </comment>
+        </port>
+        <port name="SchedIn" data_type="Sched" kind="sync_input">
+            <comment>
+            The rate group scheduler input
+            </comment>
+        </port>
+    </ports>
+    <commands>
+        <command kind="async" opcode="0" mnemonic="SET_RESPONSE">
+            <comment>
+            Response : 1 for hello; 2 for helloback
+            </comment>
+        </command>
+        <command kind="async" opcode="1" mnemonic="CLEAR_EVENT_THROTTLE">
+            <comment>Clear the event throttle
+            </comment>
+        </command>
+    </commands>
+
+    <telemetry>
+        <channel id="0" name="NUM_HELLOS" data_type="U32">
+            <comment> The number of hellos </comment>
+        </channel>
+        <channel id="1" name="GREET" data_type="HelloWorld::Hello">
+            <comment> Record exchanges of hello/helloback </comment>
+        </channel>
+    </telemetry>
+
+    <events>
+        <event id="0" name="HELLO_REPLIED" severity="ACTIVITY_HI" format_string = "Re: %d" throttle = "3">
+            <comment>
+            Hello replied
+            </comment>
+            <args>
+                <arg name="helloback" type="I32">
+                    <comment> The reply = 2 </comment>
+                </arg>          
+            </args>
+        </event>
+        <event id="1" name="THROTTLE_CLEARED" severity="ACTIVITY_HI" format_string = "Event throttle cleared" >
+            <comment> Event throttle cleared </comment>
+        </event>
+    </events>
+    
+</component>

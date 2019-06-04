@@ -4,11 +4,11 @@ include $(BUILD_ROOT)/mk/configs/compiler/ccs7.0-common.mk
 include $(BUILD_ROOT)/mk/configs/compiler/freertos_common.mk
 
 #TI_CCS_DIR := /cygdrive/c/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.7.LTS
-TI_CCS_DIR := /usr/bin
+TI_CCS_DIR := /home/erynqian/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/bin
 
 CCS_R4_COMMON_FLAGS :=  $(COMMON_DEFINES) \
                                 $(CCS_FLAGS_COMMON) \
-                                -mv7R4 \
+                                -mv4 \
                                 --code_state=32 \
                                 -me \
                                 --abi=eabi --enum_type=packed \
@@ -18,44 +18,61 @@ CCS_R4_COMMON_FLAGS :=  $(COMMON_DEFINES) \
 
 CCS_R4_COMMON_INCLUDES :=   $(COMMON_INCLUDES) \
                             $(CCS_INCLUDES_COMMON) \
+                            $(FREERTOS_REAL_INCLUDES_COMMON) \
                             $(INCLUDE_PATH)$(BUILD_ROOT)/R4/HAL/include \
-                            $(FREERTOS_REAL_INCLUDES_COMMON)
+                            $(INCLUDE_PATH)/home/erynqian/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include
 
 COVERAGE :=
 
-CC :=  $(TI_CCS_DIR)/armcl
+# CC :=  $(TI_CCS_DIR)/armcl
+CC := /home/erynqian/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/bin/armcl
 CXX := $(CC)
 
-LINK_LIB := $(TI_CCS_DIR)/armar
+LINK_LIB := /home/erynqian/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/bin/armar
 LINK_LIB_FLAGS := r
 POST_LINK_LIB := $(PYTHON_BIN) $(BUILD_ROOT)/mk/bin/empty.py
 
-LINK_LIBS :=    -l /usr/arm-linux-gnueabihf/lib/libc.a \
+LINK_LIBS :=    -l /home/erynqian/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/lib/libc.a \
                 $(BUILD_ROOT)/Os/FreeRTOS/FreeRTOS-Real/HAL/source/sys_link.cmd
                 # -l$(BUILD_ROOT)/R4/R4FlashApi/F021_API_CortexR4_LE.lib 
+                #-l /usr/arm-linux-gnueabihf/lib/libc.a
 
 LINK_BIN :=  $(CC)
-LINK_BIN_FLAGS :=   -mv7R4 \
-                    --code_state=32 \
-                    --float_support=VFPv3D16 \
-                    \
-                    -g --c99 \
-                    --display_error_number \
+# LINK_BIN_FLAGS :=   -mv7R4 \
+                    # --code_state=32 \
+                    # --float_support=VFPv3D16 \
+                    # \
+                    # -g --c99 \
+                    # --display_error_number \
+                    # --diag_warning=225 \
+                    # --diag_wrap=off \
+                    # --abi=eabi \
+                    # --enum_type=packed \
+                    # -z \
+                    # -m"R4Bin.map" \
+                    # --heap_size=0x800 \
+                    # --stack_size=0x800 \
+                    # --generate_dead_funcs_list="R4Bin_dead_funcs.xml" \
+                    # --xml_link_info="R4Bin_linkInfo.xml" \
+                    # --rom_model \
+                    # --me \
+                    # --reread_libs \
+                    # --warn_sections \
+                    # --retain=resetEntry # Needed to populate .intvecs 
+
+LINK_BIN_FLAGS :=   -O2 \
                     --diag_warning=225 \
                     --diag_wrap=off \
-                    --abi=eabi \
-                    --enum_type=packed \
+                    --display_error_number \
                     -z \
-                    -m"R4Bin.map" \
-                    --heap_size=0x800 \
-                    --stack_size=0x800 \
-                    --generate_dead_funcs_list="R4Bin_dead_funcs.xml" \
-                    --xml_link_info="R4Bin_linkInfo.xml" \
-                    --rom_model \
-                    --me \
+                    -m "HelloWorld.map" \
+                    -i"/home/erynqian/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/lib" \
                     --reread_libs \
+                    --diag_wrap=off \
+                    --display_error_number \
                     --warn_sections \
-                    --retain=resetEntry # Needed to populate .intvecs
+                    --rom_model \
+                    -o "CubeRover.out"
 
 # LINK_BIN_FLAGS :=   -mv7R5 \
 #                     --code_state=32 \

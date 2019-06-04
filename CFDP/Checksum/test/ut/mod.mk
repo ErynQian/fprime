@@ -3,7 +3,3 @@ TEST_MODS = \
 						CFDP/Checksum \
 						Fw/Types \
 						gtest
-
-
-
-COMPARGS = -I$(CURDIR)/test/ut/Handcode

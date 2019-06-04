@@ -18,7 +18,7 @@ JPL Contributors to the F' Software Framework:
 * Kaye, Warren
 * Kooi, David
 * Klemm, Roger
-* Kubiak, Gerik
+* Kubiak, Gerak
 * Levison, Jeffrey
 * Manglapus, Lloyd
 * Mueller, David
