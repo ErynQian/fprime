@@ -19,7 +19,7 @@ void exitTasks(void);
 #include <Svc/BufferManager/BufferManager.hpp>
 #include <Svc/Health/HealthComponentImpl.hpp>
 
-#include <Svc/SocketGndIf/SvcSocketGndIfImpl.hpp>
+// #include <Svc/SocketGndIf/SvcSocketGndIfImpl.hpp>
 
 #include <Ref/RecvBuffApp/RecvBuffComponentImpl.hpp>
 #include <Ref/SendBuffApp/SendBuffComponentImpl.hpp>
@@ -32,7 +32,7 @@ void exitTasks(void);
 extern Svc::RateGroupDriverImpl rateGroupDriverComp;
 extern Svc::ActiveRateGroupImpl rateGroup1Comp, rateGroup2Comp, rateGroup3Comp;
 extern Svc::CmdSequencerComponentImpl cmdSeq;
-extern Svc::SocketGndIfImpl sockGndIf;
+// extern Svc::SocketGndIfImpl sockGndIf;
 extern Svc::ConsoleTextLoggerImpl textLogger;
 extern Svc::ActiveLoggerImpl eventLogger;
 extern Svc::LinuxTimeImpl linuxTime;

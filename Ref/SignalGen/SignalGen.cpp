@@ -27,9 +27,7 @@
 #include <functional>
 
 // TKC - don't know why it's undefined in VxWorks
-#ifdef TGT_OS_TYPE_VXWORKS
 #define M_PI (22.0/7.0)
-#endif
 
 namespace Ref {
 

@@ -21,7 +21,7 @@
 	<import_component_type>Ref/SignalGen/SignalGenComponentAi.xml</import_component_type>
 	<import_component_type>Svc/AssertFatalAdapter/AssertFatalAdapterComponentAi.xml</import_component_type>
 	<import_component_type>Svc/Health/HealthComponentAi.xml</import_component_type>
-	<import_component_type>Svc/GndIf/GndIfComponentAi.xml</import_component_type>
+	<!--import_component_type>Svc/GndIf/GndIfComponentAi.xml</import_component_type-->
 	<import_component_type>Svc/BufferManager/BufferManagerComponentAi.xml</import_component_type>
 	<import_component_type>Svc/ActiveLogger/ActiveLoggerComponentAi.xml</import_component_type>
 	<import_component_type>Svc/Time/TimeComponentAi.xml</import_component_type>
@@ -70,7 +70,7 @@
 
    <instance namespace="Svc" name="health" type="Health" base_id="361"  base_id_window="20" />
 
-   <instance namespace="Svc" name="sockGndIf" type="GndIf" base_id="381"  base_id_window="20" />
+   <!--instance namespace="Svc" name="sockGndIf" type="GndIf" base_id="381"  base_id_window="20" /-->
 
    <instance namespace="Svc" name="fileDownlinkBufferManager" type="BufferManager" base_id="401"  base_id_window="20" />
 
@@ -103,22 +103,22 @@
 	 <source component = "pingRcvr" port = "LogText" type = "LogText" num = "0"/>
  	 <target component = "textLogger" port = "TextLogger" type = "LogText" num = "0"/>
 </connection>
-<connection name = "Connection5">
+<!--connection name = "Connection5">
 	 <source component = "sockGndIf" port = "Time" type = "Time" num = "0"/>
  	 <target component = "linuxTime" port = "timeGetPort" type = "Time" num = "0"/>
-</connection>
-<connection name = "Connection6">
+</connection-->
+<!--connection name = "Connection6">
 	 <source component = "sockGndIf" port = "Log" type = "Log" num = "0"/>
  	 <target component = "eventLogger" port = "LogRecv" type = "Log" num = "0"/>
-</connection>
+</connection-->
 <connection name = "Connection7">
 	 <source component = "sendBuffComp" port = "Data" type = "DataBuffer" num = "0"/>
  	 <target component = "blockDrv" port = "BufferIn" type = "DataBuffer" num = "0"/>
 </connection>
-<connection name = "Connection8">
+<!--connection name = "Connection8">
 	 <source component = "sockGndIf" port = "fileUplinkBufferGet" type = "BufferGet" num = "0"/>
  	 <target component = "fileUplinkBufferManager" port = "bufferGetCallee" type = "BufferGet" num = "0"/>
-</connection>
+</connection-->
 <connection name = "Connection9">
 	 <source component = "health" port = "PingSend" type = "Ping" num = "5"/>
  	 <target component = "fileUplink" port = "pingIn" type = "Ping" num = "0"/>
@@ -383,10 +383,10 @@
 	 <source component = "cmdSeq" port = "logOut" type = "Log" num = "0"/>
  	 <target component = "eventLogger" port = "LogRecv" type = "Log" num = "0"/>
 </connection>
-<connection name = "Connection75">
+<!--connection name = "Connection75">
 	 <source component = "sockGndIf" port = "LogText" type = "LogText" num = "0"/>
  	 <target component = "textLogger" port = "TextLogger" type = "LogText" num = "0"/>
-</connection>
+</connection-->
 <connection name = "Connection76">
 	 <source component = "rateGroupDriverComp" port = "CycleOut" type = "Cycle" num = "2"/>
  	 <target component = "rateGroup3Comp" port = "CycleIn" type = "Cycle" num = "0"/>
@@ -607,18 +607,18 @@
 	 <source component = "fileUplink" port = "timeCaller" type = "Time" num = "0"/>
  	 <target component = "linuxTime" port = "timeGetPort" type = "Time" num = "0"/>
 </connection>
-<connection name = "Connection131">
+<!--connection name = "Connection131">
 	 <source component = "eventLogger" port = "PktSend" type = "Com" num = "0"/>
  	 <target component = "sockGndIf" port = "downlinkPort" type = "Com" num = "0"/>
-</connection>
+</connection-->
 <connection name = "Connection132">
 	 <source component = "recvBuffComp" port = "LogText" type = "LogText" num = "0"/>
  	 <target component = "textLogger" port = "TextLogger" type = "LogText" num = "0"/>
 </connection>
-<connection name = "Connection133">
+<!--connection name = "Connection133">
 	 <source component = "sockGndIf" port = "fileUplinkBufferSendOut" type = "BufferSend" num = "0"/>
  	 <target component = "fileUplink" port = "bufferSendIn" type = "BufferSend" num = "0"/>
-</connection>
+</connection-->
 <connection name = "Connection134">
 	 <source component = "pingRcvr" port = "Log" type = "Log" num = "0"/>
  	 <target component = "eventLogger" port = "LogRecv" type = "Log" num = "0"/>
@@ -643,10 +643,10 @@
 	 <source component = "rateGroup2Comp" port = "Time" type = "Time" num = "0"/>
  	 <target component = "linuxTime" port = "timeGetPort" type = "Time" num = "0"/>
 </connection>
-<connection name = "Connection140">
+<!--connection name = "Connection140">
 	 <source component = "sockGndIf" port = "fileDownlinkBufferSendOut" type = "BufferSend" num = "0"/>
  	 <target component = "fileDownlinkBufferManager" port = "bufferSendIn" type = "BufferSend" num = "0"/>
-</connection>
+</connection-->
 <connection name = "Connection141">
 	 <source component = "rateGroup1Comp" port = "Log" type = "Log" num = "0"/>
  	 <target component = "eventLogger" port = "LogRecv" type = "Log" num = "0"/>
@@ -655,10 +655,10 @@
 	 <source component = "SG3" port = "timeCaller" type = "Time" num = "0"/>
  	 <target component = "linuxTime" port = "timeGetPort" type = "Time" num = "0"/>
 </connection>
-<connection name = "Connection143">
+<!--connection name = "Connection143">
 	 <source component = "fileDownlink" port = "bufferSendOut" type = "BufferSend" num = "0"/>
  	 <target component = "sockGndIf" port = "fileDownlinkBufferSendIn" type = "BufferSend" num = "0"/>
-</connection>
+</connection-->
 <connection name = "Connection144">
 	 <source component = "SG2" port = "cmdResponseOut" type = "CmdResponse" num = "0"/>
  	 <target component = "cmdDisp" port = "compCmdStat" type = "CmdResponse" num = "0"/>
@@ -675,10 +675,10 @@
 	 <source component = "health" port = "PingSend" type = "Ping" num = "4"/>
  	 <target component = "fileDownlink" port = "pingIn" type = "Ping" num = "0"/>
 </connection>
-<connection name = "Connection148">
+<!--connection name = "Connection148">
 	 <source component = "chanTlm" port = "PktSend" type = "Com" num = "0"/>
  	 <target component = "sockGndIf" port = "downlinkPort" type = "Com" num = "0"/>
-</connection>
+</connection-->
 <connection name = "Connection149">
 	 <source component = "SG3" port = "logOut" type = "Log" num = "0"/>
  	 <target component = "eventLogger" port = "LogRecv" type = "Log" num = "0"/>
@@ -787,10 +787,10 @@
 	 <source component = "cmdDisp" port = "compCmdSend" type = "Cmd" num = "11"/>
  	 <target component = "SG5" port = "cmdIn" type = "Cmd" num = "0"/>
 </connection>
-<connection name = "Connection176">
+<!--connection name = "Connection176">
 	 <source component = "sockGndIf" port = "uplinkPort" type = "Com" num = "0"/>
  	 <target component = "cmdDisp" port = "seqCmdBuff" type = "Com" num = "1"/>
-</connection>
+</connection-->
 <connection name = "Connection177">
 	 <source component = "cmdDisp" port = "compCmdSend" type = "Cmd" num = "12"/>
  	 <target component = "prmDb" port = "CmdDisp" type = "Cmd" num = "0"/>

@@ -60,11 +60,11 @@ Svc::ActiveRateGroupImpl rateGroup3Comp
 ;
 
 // Command Components
-Svc::SocketGndIfImpl sockGndIf
-#if FW_OBJECT_NAMES == 1
-                    ("SGIF")
-#endif
-;
+// Svc::SocketGndIfImpl sockGndIf
+// #if FW_OBJECT_NAMES == 1
+//                     ("SGIF")
+// #endif
+// ;
 
 // Driver Component
 Drv::BlockDriverImpl blockDrv
@@ -238,7 +238,7 @@ void constructApp(int port_number, char* hostname) {
 
     prmDb.init(10,0);
 
-    sockGndIf.init(0);
+    // sockGndIf.init(0);
 
     fileUplink.init(30, 0);
     fileDownlink.init(30, 0);
@@ -318,7 +318,7 @@ void constructApp(int port_number, char* hostname) {
     pingRcvr.start(0, 100, 10*1024);
 
     // Initialize socket server
-    sockGndIf.startSocketTask(100, port_number, hostname);
+    // sockGndIf.startSocketTask(100, port_number, hostname);
 
 #if FW_OBJECT_REGISTRATION == 1
     //simpleReg.dump();
@@ -391,25 +391,25 @@ int main(int argc, char* argv[]) {
 	option = 0;
 	hostname = NULL;
 
-	while ((option = getopt(argc, argv, "hp:a:")) != -1){
-		switch(option) {
-			case 'h':
-				print_usage();
-				return 0;
-				break;
-			case 'p':
-				port_number = atoi(optarg);
-				break;
-			case 'a':
-				hostname = optarg;
-				break;
-			case '?':
-				return 1;
-			default:
-				print_usage();
-				return 1;
-		}
-	}
+	// while ((option = getopt(argc, argv, "hp:a:")) != -1){
+	// 	switch(option) {
+	// 		case 'h':
+	// 			print_usage();
+	// 			return 0;
+	// 			break;
+	// 		case 'p':
+	// 			port_number = atoi(optarg);
+	// 			break;
+	// 		case 'a':
+	// 			hostname = optarg;
+	// 			break;
+	// 		case '?':
+	// 			return 1;
+	// 		default:
+	// 			print_usage();
+	// 			return 1;
+	// 	}
+	// }
 
 	(void) printf("Hit Ctrl-C to quit\n");
 

@@ -41,13 +41,10 @@ SVC_MODULES := \
 	Svc/CmdDispatcher \
 	Svc/CmdSequencer \
 	Svc/Seq \
-	Svc/GndIf \
 	Svc/ActiveRateGroup \
 	Svc/RateGroupDriver \
 	Svc/Sched \
 	Svc/ComLogger \
-	Svc/SocketGndIf \
-	Svc/BuffGndSockIf \
 	Svc/TlmChan \
 	Svc/PassiveTextLogger \
 	Svc/PassiveConsoleTextLogger \
@@ -68,6 +65,10 @@ SVC_MODULES := \
     Svc/AssertFatalAdapter \
     Svc/FatalHandler \
 	Svc/FileManager
+
+	#Svc/BuffGndSockIf \
+	Svc/GndIf \
+	Svc/SocketGndIf
 
 DEMO_DRV_MODULES := \
 	Drv/DataTypes \
