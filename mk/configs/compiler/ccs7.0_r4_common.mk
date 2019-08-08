@@ -7,22 +7,18 @@ include $(BUILD_ROOT)/mk/configs/compiler/freertos_common.mk
 TI_CCS_DIR := /home/erynqian/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/bin
 
 CCS_R4_COMMON_FLAGS :=  $(COMMON_DEFINES) \
-                                $(CCS_FLAGS_COMMON) \
-                                -mv4 \
-                                --code_state=32 \
-                                -me \
-                                --abi=eabi --enum_type=packed \
-                                $(FREERTOS_REAL_FLAGS_COMMON) \
-                                -D_LIBCPP_HAS_NO_LONG_LONG \
-                                -DBUILD_TIR4
+                        $(FREERTOS_REAL_FLAGS_COMMON) \
+                        $(DEFINE)BUILD_TIR4 \
+                        $(DEFINE)_LIBCPP_HAS_NO_LONG_LONG 
+                                
 
 
 
 CCS_R4_COMMON_INCLUDES :=   $(COMMON_INCLUDES) \
                             $(CCS_INCLUDES_COMMON) \
                             $(FREERTOS_REAL_INCLUDES_COMMON) \
-                            $(INCLUDE_PATH)$(BUILD_ROOT)/R4/HAL/include \
-                            $(INCLUDE_PATH)/home/erynqian/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include
+                            -i"$(BUILD_ROOT)/HAL" \
+                            -i"/home/erynqian/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include"
 
 COVERAGE :=
 
@@ -34,10 +30,9 @@ LINK_LIB := /home/erynqian/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/bin/arm
 LINK_LIB_FLAGS := r
 POST_LINK_LIB := $(PYTHON_BIN) $(BUILD_ROOT)/mk/bin/empty.py
 
-LINK_LIBS :=    -l /home/erynqian/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/lib/libc.a \
-                $(BUILD_ROOT)/Os/FreeRTOS/FreeRTOS-Real/HAL/source/sys_link.cmd
-                # -l$(BUILD_ROOT)/R4/R4FlashApi/F021_API_CortexR4_LE.lib 
-                #-l /usr/arm-linux-gnueabihf/lib/libc.a
+LINK_LIBS :=    $(BUILD_ROOT)/HAL/sys_link.cmd \
+                -llibc.a
+                # -l$(BUILD_ROOT)/R4/R4FlashApi/F021_API_CortexR4_LE.lib
 
 LINK_BIN :=  $(CC)
 # LINK_BIN_FLAGS :=   -mv7R4 \
@@ -62,19 +57,30 @@ LINK_BIN :=  $(CC)
                     # --warn_sections \
                     # --retain=resetEntry # Needed to populate .intvecs 
 
-LINK_BIN_FLAGS :=   -O2 \
+LINK_BIN_FLAGS :=   -mv7R4 \
+                    --code_state=32 \
+                    --float_support=VFPv3D16 \
+                    --enum_type=packed \
+                    -me \
+                    -O2 \
                     --diag_warning=225 \
                     --diag_wrap=off \
+                    --abi=eabi \
                     --display_error_number \
                     -z \
-                    -m "HelloWorld.map" \
+                    -m"R4Bin.map" \
+                    --heap_size=0x800 \
+                    --stack_size=0x800 \
+                    --generate_dead_funcs_list="R4Bin_dead_funcs.xml" \
+                    --xml_link_info="R4Bin_linkInfo.xml" \
                     -i"/home/erynqian/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/lib" \
                     --reread_libs \
                     --diag_wrap=off \
                     --display_error_number \
                     --warn_sections \
+                    --retain=resetEntry \
                     --rom_model \
-                    -o "CubeRover.out"
+                    -o "CubeRover.out" 
 
 # LINK_BIN_FLAGS :=   -mv7R5 \
 #                     --code_state=32 \

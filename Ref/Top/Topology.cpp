@@ -383,12 +383,16 @@ static void sighandler(int signum) {
 	terminate = 1;
 }
 
-int main(int argc, char* argv[]) {
+extern "C" {
+    int fprime_main(int argc, char* argv[]);
+}
+
+int fprime_main(int argc, char* argv[]) {
 	U32 port_number;
-	I32 option;
+	// I32 option;
 	char *hostname;
 	port_number = 0;
-	option = 0;
+	// option = 0;
 	hostname = NULL;
 
 	// while ((option = getopt(argc, argv, "hp:a:")) != -1){
@@ -437,3 +441,5 @@ int main(int argc, char* argv[]) {
 
     return 0;
 }
+
+

@@ -9,7 +9,7 @@
 #include "gio.h"
 #include "system.h"
 #include "i2c.h"
-#include "freeRTOS.h"
+#include "FreeRTOS.h"
 #include "os_semphr.h"
 #include "os_queue.h"
 #include "pinmux.h"

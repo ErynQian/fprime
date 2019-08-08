@@ -55,7 +55,7 @@
         </port>
         
     </ports>
-    <internal_interfaces>
+    <!--internal_interfaces>
         <internal_interface name="InterruptReport" priority="1">
             <comment>
             Internal interrupt reporting interface
@@ -66,6 +66,6 @@
                 </arg>          
             </args>
         </internal_interface>
-    </internal_interfaces>    
+    </internal_interfaces-->    
 </component>
 

@@ -73,7 +73,7 @@
 /*
  * Include the generic headers required for the FreeRTOS port being used.
  */
-#include <linux/stddef.h>
+#include <stddef.h>
 
 /*
  * If stdint.h cannot be located then:

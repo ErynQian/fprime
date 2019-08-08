@@ -27,6 +27,9 @@ FW_GTEST_MODULES := \
 OS_MODULES := \
 	Os
 
+HAL_MODULES := \
+	HAL
+
 CFDP_MODULES := \
 	CFDP/Checksum
 
@@ -101,6 +104,8 @@ Ref_MODULES := \
 	$(FW_MODULES) \
 	\
 	$(OS_MODULES) \
+	\
+	$(HAL_MODULES) \
 	\
 	$(CFDP_MODULES) \
   	\

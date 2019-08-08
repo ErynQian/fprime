@@ -1,4 +1,5 @@
-CCS_COMMON := --display_error_number --diag_warning=225 --diag_wrap=off -DNAME_MAX=31 -DPATH_MAX=127
+CCS_COMMON := -mv7R4 --float_support=VFPv3D16 --code_state=32 -me \
+			--display_error_number --diag_warning=225 --diag_wrap=off -DNAME_MAX=31 -DPATH_MAX=127
 
 DEPEND_FILE := -ppa -ppd=
                
@@ -15,13 +16,14 @@ AC_CXX_FLAGS :=
 AC_HSM_FLAGS := 
 AC_PARAMS_FLAGS := 
 
-COMPILE_ONLY := --compile_only
+COMPILE_ONLY := -c
+DEFINE := -D
 COMPILE_TO := --output_file
 LIBRARY_TO := 
 LINK_BIN_TO := -o
-INCLUDE_PATH := --include_path=
+INCLUDE_PATH := -I
 
-CCS_INCLUDES_COMMON := $(INCLUDE_PATH)$(BUILD_ROOT)/Fw/Types/StdIntInc
+CCS_INCLUDES_COMMON := -i"$(BUILD_ROOT)/Fw/Types/StdIntInc"
 
 
 # Some warning override variables. These will go in individual modules where the warning-as-error needs to be overridden

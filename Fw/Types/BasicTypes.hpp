@@ -39,8 +39,6 @@ typedef unsigned int NATIVE_UINT_TYPE; //!< native unsigned integer type declara
 //   #error TI ARM is defined!!!!!!
 // #endif
 
-
-
 #if defined BUILD_TIR4
   NATIVE_INT_TYPE strnlen(const char *s, NATIVE_INT_TYPE maxlen);
   #define POINTER_CAST U32

@@ -71,7 +71,17 @@ SRC_CORTEX_R4 :=    $(shell find ../R4/HAL/source -name '*.c') \
                     # FreeRTOS/TraceRecorder/trcKernelPort.c \
                     # FreeRTOS/TraceRecorder/streamports/File/trcStreamingPort.c \
                     # FreeRTOS/TraceRecorder/trcStreamingRecorder.c \
-                    # FreeRTOS/TraceRecorder/trcSnapshotRecorder.c \
+                    # FreeRTOS/TraceRecorder/trcSnapshotRecorder.c 
+
+SRC_TIR4 :=         FreeRTOS/assert.c \
+                    FreeRTOS/Queue.cpp \
+                    FreeRTOS/Mutex.cpp \
+                    FreeRTOS/Task.cpp \
+                    FreeRTOS/IntervalTimer.cpp \
+                    FreeRTOS/InterruptLock.cpp \
+                    FreeRTOS/WatchdogTimer.cpp \
+                    Linux/FileSystem.cpp \
+                    Linux/File.cpp
 
 SRC_LINUX=      Pthreads/Queue.cpp \
                 Pthreads/BufferQueueCommon.cpp \

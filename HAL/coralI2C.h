@@ -9,7 +9,7 @@
 #define INCLUDE_CORALI2C_H_
 
 #include "hal_stdtypes.h"
-#include "freeRTOS.h"
+#include "FreeRTOS.h"
 #include "os_semphr.h"
 
 /*If 1, trying to send a Motor Driver message while TX is unavailable will result
