@@ -3,10 +3,14 @@
 #include <stdio.h>
 #include <time.h>
 #include <assert.h>
-#include "FreeRTOS.h"
-#include "queue.h"
+#include <HAL/FreeRTOS.h>
+#include <HAL/os_queue.h>
 #include <iostream>
 using namespace std;
+
+#ifdef configUSE_TRACE_FACILITY
+#include "trcKernelPort.h"
+#endif
 
 // THIS SUCKS PLACE IT SOMEWHERE ELSE
 const int QUEUE_BLOCK_DURATION = 1000;

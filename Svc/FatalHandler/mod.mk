@@ -18,6 +18,8 @@ SRC_LINUX = FatalHandlerComponentLinuxImpl.cpp
 
 SRC_FREERTOS_SIM = FatalHandlerComponentLinuxImpl.cpp
 
+SRC_TIR4 = FatalHandlerComponentLinuxImpl.cpp
+
 SRC_CYGWIN = FatalHandlerComponentLinuxImpl.cpp
 
 SRC_DARWIN = FatalHandlerComponentLinuxImpl.cpp

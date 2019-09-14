@@ -33,5 +33,7 @@ HDR = LinuxTimeImpl.hpp
 # CHANGE THIS TO DARWIN FOR MAC USERS
 SRC_FREERTOS_SIM = FreeRTOSTimeImpl.cpp
 
+SRC_TIR4 = FreeRTOSTimeImpl.cpp
+
 SUBDIRS = test
 

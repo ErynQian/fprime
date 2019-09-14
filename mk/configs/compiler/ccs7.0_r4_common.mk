@@ -4,7 +4,7 @@ include $(BUILD_ROOT)/mk/configs/compiler/ccs7.0-common.mk
 include $(BUILD_ROOT)/mk/configs/compiler/freertos_common.mk
 
 #TI_CCS_DIR := /cygdrive/c/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.7.LTS
-TI_CCS_DIR := /home/erynqian/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/bin
+TI_CCS_DIR := ${TI_CCSV8_TOOLS_COMPILER_TI_CGT_ARM_PATH}/bin
 
 CCS_R4_COMMON_FLAGS :=  $(COMMON_DEFINES) \
                         $(FREERTOS_REAL_FLAGS_COMMON) \
@@ -18,15 +18,15 @@ CCS_R4_COMMON_INCLUDES :=   $(COMMON_INCLUDES) \
                             $(CCS_INCLUDES_COMMON) \
                             $(FREERTOS_REAL_INCLUDES_COMMON) \
                             -i"$(BUILD_ROOT)/HAL" \
-                            -i"/home/erynqian/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include"
+                            -i"${TI_CCSV8_TOOLS_COMPILER_TI_CGT_ARM_PATH}/include"
 
 COVERAGE :=
 
 # CC :=  $(TI_CCS_DIR)/armcl
-CC := /home/erynqian/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/bin/armcl
+CC := ${TI_CCSV8_TOOLS_COMPILER_TI_CGT_ARM_PATH}/bin/armcl
 CXX := $(CC)
 
-LINK_LIB := /home/erynqian/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/bin/armar
+LINK_LIB := ${TI_CCSV8_TOOLS_COMPILER_TI_CGT_ARM_PATH}/bin/armar
 LINK_LIB_FLAGS := r
 POST_LINK_LIB := $(PYTHON_BIN) $(BUILD_ROOT)/mk/bin/empty.py
 
@@ -73,7 +73,7 @@ LINK_BIN_FLAGS :=   -mv7R4 \
                     --stack_size=0x800 \
                     --generate_dead_funcs_list="R4Bin_dead_funcs.xml" \
                     --xml_link_info="R4Bin_linkInfo.xml" \
-                    -i"/home/erynqian/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/lib" \
+                    -i"${TI_CCSV8_TOOLS_COMPILER_TI_CGT_ARM_PATH}/lib" \
                     --reread_libs \
                     --diag_wrap=off \
                     --display_error_number \

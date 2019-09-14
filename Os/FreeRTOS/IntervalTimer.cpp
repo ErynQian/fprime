@@ -1,7 +1,7 @@
 #include <Os/IntervalTimer.hpp>
 #include <Fw/Types/Assert.hpp>
-#include "FreeRTOS.h"
-#include "task.h"
+#include <HAL/FreeRTOS.h>
+#include <HAL/os_task.h>
 #include <string.h>
 
 

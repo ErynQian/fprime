@@ -1,7 +1,7 @@
 #include <Os/Mutex.hpp>
 #include <Fw/Types/Assert.hpp>
-#include "FreeRTOS.h"
-#include "semphr.h"
+#include <HAL/FreeRTOS.h>
+#include <HAL/os_semphr.h>
 
 namespace Os
 {

@@ -16,6 +16,8 @@ SRC = 	ConsoleTextLoggerImplCommon.cpp
 
 SRC_FREERTOS_SIM = Stub/PrintfLoggerImplStub.cpp
 
+SRC_TIR4 = Stub/PrintfLoggerImplStub.cpp
+
 SRC_CYGWIN = Stub/PrintfLoggerImplStub.cpp
 
 SRC_LINUX = Stub/PrintfLoggerImplStub.cpp

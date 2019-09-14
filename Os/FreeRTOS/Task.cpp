@@ -14,8 +14,8 @@
 #include <string.h>
 #include <time.h>
 #include <stdio.h>
-#include "FreeRTOS.h"
-#include "task.h"
+#include <HAL/FreeRTOS.h>
+#include <HAL/os_task.h>
 
 namespace Os {
     Task::Task() : m_handle(0), m_identifier(0), m_affinity(-1), m_started(false), m_suspendedOnPurpose(false)

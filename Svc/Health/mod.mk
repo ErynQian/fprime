@@ -26,3 +26,5 @@ SRC_DARWIN = Stub/HealthComponentStubChecks.cpp
 SRC_RASPIAN = Stub/HealthComponentStubChecks.cpp
 
 SRC_FREERTOS_SIM = Stub/HealthComponentStubChecks.cpp
+
+SRC_TIR4 = Stub/HealthComponentStubChecks.cpp

@@ -8,7 +8,8 @@
 #include <Svc/LinuxTime/LinuxTimeImpl.hpp>
 #include <Fw/Time/Time.hpp>
 #include <FreeRTOS.h>
-#include <task.h>
+#include <HAL/os_projdefs.h>
+#include <HAL/os_task.h>
 
 namespace Svc {
 
