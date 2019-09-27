@@ -1,3 +1,0 @@
-SRC = 	HelloSerializableAi.xml
-
-

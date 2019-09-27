@@ -71,15 +71,25 @@ SVC_MODULES := \
 
 DEMO_DRV_MODULES := \
 	Drv/DataTypes \
-	Drv/BlockDriver
+	Drv/BlockDriver \
+	Drv/LinuxSerialDriver \
+	Drv/LinuxSpiDriver \
+	Drv/LinuxI2CDriver \
+	Drv/SpiDriverPorts \
+	Drv/SerialDriverPorts \
+	Drv/I2CDriverPorts
+
 
 LINUX_DRV_MODULES := \
 	Drv/LinuxGpioDriver \
 	Drv/LinuxSerialDriver \
 	Drv/LinuxSpiDriver \
+	Drv/LinuxI2CDriver \
 	Drv/SerialDriverPorts \
 	Drv/SpiDriverPorts \
-	Drv/GpioDriverPorts
+	Drv/GpioDriverPorts \
+	Drv/I2CDriverPorts
+	
 
 
 REF_MODULES := \
@@ -111,35 +121,34 @@ Ref_MODULES := \
   	\
   	$(UTILS_MODULES)
 
-HELLOWORLD_MODULES := \
-	HelloWorld/Top \
-	HelloWorld/RecvBuffApp \
-	HelloWorld/SendBuffApp \
-	HelloWorld/SignalGen \
-	HelloWorld/PingReceiver \
-	HelloWorld/HelloSender \
-	HelloWorld/HelloReceiver \
-	HelloWorld/HelloTypes \
-	HelloWorld/HelloPorts
+CUBEROVERFSW_MODULES := \
+        CubeRoverFSW/Top \
+        CubeRoverFSW/SystemDriver \
+        CubeRoverFSW/RadioDriver \
+        CubeRoverFSW/SensorDriver \
+        CubeRoverFSW/CameraDriver \
+        CubeRoverFSW/MotorDriver
 
 
-
-HelloWorld_MODULES := \
-	\
-	$(HELLOWORLD_MODULES) \
-	\
-	$(SVC_MODULES) \
-	\
-	$(DEMO_DRV_MODULES) \
-	\
-	$(FW_MODULES) \
-	\
-	$(OS_MODULES) \
-	\
-	$(CFDP_MODULES) \
-  	\
-  	$(UTILS_MODULES)
-
+CubeRoverFSW_MODULES := \
+        \
+        $(CUBEROVERFSW_MODULES) \
+        \
+        $(REF_MODULES) \
+        \
+        $(SVC_MODULES) \
+        \
+        $(DEMO_DRV_MODULES) \
+        \
+        $(FW_MODULES) \
+        \
+        $(OS_MODULES) \
+        \
+		$(HAL_MODULES) \
+		\
+        $(CFDP_MODULES) \
+        \
+        $(UTILS_MODULES)
 
 GPS_MODULES := \
     GpsApp/Top \
@@ -261,7 +270,7 @@ OTHER_MODULES := \
 
 # List deployments
 
-DEPLOYMENTS := acdev GpsApp Ref #HelloWorld Ref 
+DEPLOYMENTS := acdev Ref CubeRoverFSW #Ref 
 
 # Location of ground/gse software. Autocoded dictionary elements are copied here.
 GDS_MODULE := Gse

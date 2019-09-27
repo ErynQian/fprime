@@ -70,11 +70,13 @@ uint8	emacAddress[6U] = 	{0xFFU, 0xFFU, 0xFFU, 0xFFU, 0xFFU, 0xFFU};
 uint32 	emacPhyAddress	=	0U;
 
 int fprime_main(int argc, char* argv[]);
+int CubeRover_main(int argc, char* argv[]);
 
 int main(void)
 {
 /* USER CODE BEGIN (3) */
     fprime_main(0, NULL);
+    // CubeRover_main(0, NULL);
     // testbench();
 /* USER CODE END */
 
